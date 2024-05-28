@@ -16,7 +16,13 @@ func:
     mov esi, ebx            ; esi = destination ptr
 
 start:
-    mov cl, [ebx]           ; cl = first char
+    mov cl, [ebx]           ; cl = first alar
+    inc ebx
+    mov al, [ebx]
+    inc ebx
+    mov dl, [ebx]
+    inc ebx
+    mov bl, [ebx]
 
 first_intro:
     cmp cl, 0
@@ -31,62 +37,54 @@ first:
 second_intro:
     mov [esi], cl
     inc esi
-    inc ebx
-    mov cl, [ebx]
 
-    cmp cl, 0
+    cmp al, 0
     jz end
 
 second:
-    cmp cl, 'a'
+    cmp al, 'a'
     jge store_second
 
-    add cl, 32
+    add al, 32
 
 store_second:
-    mov [esi], cl
+    mov [esi], al
     inc esi
-    inc ebx
 
 third_fourth_intro_1:
-    mov cl, [ebx]
-
-    cmp cl, 0
+    cmp dl, 0
     jz end
 
 third_fourth:
-    cmp cl, 'a'
+    cmp dl, 'a'
     jl to_lower
 
-    add cl, -32
+    add dl, -32
     jmp store_third_fourth_1
 
 to_lower:
-    add cl, 32
+    add dl, 32
 
 store_third_fourth_1:
-    mov [esi], cl
+    mov [esi], dl
     inc esi
-    inc ebx
 
 third_fourth_intro_2:
-    mov cl, [ebx]
-
-    cmp cl, 0
+    cmp bl, 0
     jz end
 
 third_fourth_2:
-    cmp cl, 'a'
+    cmp bl, 'a'
     jl to_lower_2
 
-    add cl, -32
+    add bl, -32
     jmp store_third_fourth_2
 
 to_lower_2:
-    add cl, 32
+    add bl, 32
 
 store_third_fourth_2:
-    mov [esi], cl
+    mov [esi], bl
     inc esi
     inc ebx
     jmp start
