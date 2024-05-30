@@ -36,8 +36,6 @@ compare_loop:
     cmp cl, ch
     jne compare_loop_next
 
-    ; jmp next
-
 next:
     inc ebx
     jmp outer_loop
@@ -45,10 +43,6 @@ next:
 compare_loop_next:
     inc edx
     jmp compare_loop
-
-; next:
-;     inc ebx
-;     jmp outer_loop
 
 save_to_dst:
     mov [esi], ch

@@ -14,9 +14,10 @@ func:
     mov ebx, [ebp + 8]      ; ebx = source ptr
 
     mov esi, ebx            ; esi = destination ptr
+    xor eax, eax
 
 start:
-    mov cl, [ebx]           ; cl = first alar
+    mov cl, [ebx]           ; cl = first char
     inc ebx
     mov al, [ebx]
     inc ebx
@@ -68,6 +69,8 @@ to_lower:
 store_third_fourth_1:
     mov [esi], dl
     inc esi
+
+    inc eax
 
 third_fourth_intro_2:
     cmp bl, 0
